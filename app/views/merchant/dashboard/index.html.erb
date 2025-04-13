@@ -1,0 +1,51 @@
+<div class="max-w-4xl mx-auto bg-white shadow rounded-xl p-6 space-y-6">
+    <!-- Balance -->
+    <div class="container">
+        <div class="p-5">
+            <h1 class="text-body-emphasis">Welcome, <%= current_user.username %></h1>
+            <p class="lead">
+            Your current balance: $<%= number_with_delimiter(current_user.balance, delimiter: ".") %>
+            </p>
+        </div>
+    </div>
+
+    <!-- Recent Transactions -->
+    <div class="container">
+        <div class="p-5">
+            <h2 class="text-body-emphasis">Recent Transactions</h2>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>To / From</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if @transactions.present? %>
+                        <% @transactions.each do |t| %>
+                            <tr>
+                                <td><%= t.transaction_type.upcase %></td>
+                                <td>$ <%= number_with_delimiter(t.amount, delimiter: ".") %></td>
+                                <td>
+                                    <% if t.transaction_type == "transfer" %>
+                                        <% if current_user.id == t.user_id %>
+                                            To: <%= t.recipient.username %>
+                                        <% else %>
+                                            From: <%= t.user.username %>
+                                        <% end %>
+                                    <% else %>
+                                        -
+                                    <% end %>  
+                                </td>
+                                <td><%= t.created_at %></td>
+                            </tr>
+                        <% end %>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

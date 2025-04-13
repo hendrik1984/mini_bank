@@ -1,0 +1,23 @@
+<nav class="mb-4 navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <%= image_tag "/merchant.png", alt: "Merchant Logo", class: "img-fluid", width: "30", height: "24" %>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <% if logged_in? %>
+                    <li class="nav-item"><%= link_to "Add Category", '', class: "nav-link" %></li>
+                    <li class="nav-item"><%= link_to "Add Product", '', class: "nav-link" %></li>
+                    <li class="nav-item"><%= link_to "Transactions", '', class: "nav-link" %></li>
+                    <li class="nav-item">
+                        <%= link_to "Logout", logout_path, method: :delete, data: { turbo_confirm: "Are you sure?", turbo_method: :delete }, class: "nav-link" %>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+</nav>
