@@ -1,0 +1,35 @@
+<div class="w-50 mx-auto bg-white shadow rounded-xl p-6 space-y-6">
+    <div class="container">
+        <div class="p-5">
+            <h3>Register</h3>
+
+            <%= form_with model: @user, local: true do |f| %>
+                <div class="mb-2">
+                    <%= f.label :username, nil, class: "form-label" %>
+                    <%= f.text_field :username, class: "form-control" %>
+                </div>
+
+                <div class="mb-2">
+                    <%= f.label :password, nil, class: "form-label" %>
+                    <%= f.text_field :password, class: "form-control" %>
+                </div>
+
+                <div class="mb-2">
+                    <%= f.label :password_confirmation, nil, class: "form-label" %>
+                    <%= f.text_field :password_confirmation, class: "form-control" %>
+                </div>
+
+                <div class="mb-2">
+                    <%= f.label :role, nil, class: "form-label" %>
+                    <%= f.select :role, options_for_select([["Customer", "customer"], ["Merchant", "merchant"], ["Admin", "admin"]]), 
+                        { prompt: 'Role' },
+                        { class: 'form-select form-select-md', aria: { label: 'select role' } } %>
+                </div>
+
+                <div class="mb-2">
+                    <%= f.submit "Register", class: "btn btn-primary" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

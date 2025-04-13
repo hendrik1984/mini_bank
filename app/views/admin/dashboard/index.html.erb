@@ -1,0 +1,57 @@
+<div class="max-w-4xl mx-auto bg-white shadow rounded-xl p-6 space-y-6">
+
+    <div class="container">
+        <div class="p-5">
+            <h1>Admin Dashboard</h1>
+
+            <h2>All Users</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Balance</th>
+                        <th>Created at</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @users.each do |user| %>
+                        <tr>
+                            <td><%= user.username %></td>
+                            <td><%= user.role %></td>
+                            <td><%= number_to_currency(user.balance) %></td>
+                            <td><%= user.created_at.strftime("%Y-%m-%d %H:%M") %>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="p-5">
+            <h2>All Transaction</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Recipient</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @transactions.each do |t| %>
+                        <tr>
+                            <td><%= t.user.username %></td>
+                            <td><%= t.transaction_type %></td>
+                            <td><%= number_to_currency(t.amount) %></td>
+                            <td><%= t.recipient&.username %></td>
+                            <td><%= t.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>

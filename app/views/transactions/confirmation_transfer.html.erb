@@ -1,0 +1,19 @@
+<div class="w-50 mx-auto bg-white shadow rounded-xl p-6 space-y-6">
+    <div class="container">
+        <div class="p-5">
+            <h3>Confirmation Transfer</h3>
+
+            <p><strong>To:</strong> <%= @recipient.username %></p>
+            <p><strong>Amount:</strong> $<%= @transaction.amount %></p>
+
+            <%= form_with model: @transaction, url: transactions_path, local: true do |form| %>
+                <%= form.hidden_field :recipient_username, value: @recipient.username %>
+                <%= form.hidden_field :amount %>
+                <%= form.hidden_field :transaction_type, value: "transfer" %>
+
+                <%= form.submit "Confirm Transfer", class: "btn btn-success" %>
+                <%= link_to "Cancel", new_transaction_path, class: "btn btn-secondary" %>
+            <% end %>
+        </div>
+    </div>
+</div>

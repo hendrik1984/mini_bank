@@ -1,0 +1,35 @@
+<div class="w-50 mx-auto bg-white shadow rounded-xl p-6 space-y-6">
+    <div class="container">
+        <div class="p-5" data-controller="transaction-type">
+            <h1>New Transactions</h1>
+
+            <%= form_with model: @transaction, url: confirmation_transfer_transactions_path do |f| %>
+                <div class="mb-2">
+                    <%= f.label :transaction_type, nil, class: "form-label" %>
+                    <%= f.select :transaction_type, options_for_select([["Deposit", "deposit"], ["Withdraw", "withdraw"], ["Transfer", "transfer"]], @transaction.transaction_type),
+                        { prompt: 'Select' },
+                        { class: 'form-select form-select-md', aria: { label: 'select transaction type' },
+                            data: {
+                                transaction_type_target: "transactionType",
+                                action: "transaction-type#toggleRecipient"
+                            }
+                        } %>
+                </div>
+
+                <div class="mb-2">
+                    <%= f.label :amount, nil, class: "form-label" %>
+                    <%= f.number_field :amount, step: 0.01, class: "form-control" %>
+                </div>
+
+                <div data-transaction-type-target="recipient" id="transfer_user_field" class="mb-2" style="display: none;">
+                    <%= f.label :recipient_username, nil, class: "form-label" %>
+                    <%= f.text_field :recipient_username, class: "form-control" %>
+                </div>
+
+                <div>
+                    <%= f.submit "Submit", class: "btn btn-primary" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
