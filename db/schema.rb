@@ -16,7 +16,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_13_095610) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.string "string"
     t.string "status"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

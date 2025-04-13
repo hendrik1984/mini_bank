@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <% if logged_in? %>
-                    <li class="nav-item"><%= link_to "Add Category", '', class: "nav-link" %></li>
+                    <li class="nav-item"><%= link_to "Add Category", merchant_category_path, class: "nav-link" %></li>
                     <li class="nav-item"><%= link_to "Add Product", '', class: "nav-link" %></li>
                     <li class="nav-item"><%= link_to "Transactions", '', class: "nav-link" %></li>
                     <li class="nav-item">

@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   namespace :merchant do
     get "dashboard", to: "dashboard#index"
+    get "category", to: "dashboard#category"
+    post "category", to: "dashboard#create_category"
+    get "product", to: "dashboard#product"
+    post "product", to: "dashboard#create_product"
   end
   
   namespace :admin do
