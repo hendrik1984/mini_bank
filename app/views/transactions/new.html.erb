@@ -3,7 +3,7 @@
         <div class="p-5" data-controller="transaction-type">
             <h1>New Transactions</h1>
 
-            <%= form_with model: @transaction, url: confirmation_transfer_transactions_path do |f| %>
+            <%= form_with model: @transaction, url: confirmation_transfer_transactions_path, method: :post, data: {turbo: false}, local: true do |f| %>
                 <div class="mb-2">
                     <%= f.label :transaction_type, nil, class: "form-label" %>
                     <%= f.select :transaction_type, options_for_select([["Deposit", "deposit"], ["Withdraw", "withdraw"], ["Transfer", "transfer"]], @transaction.transaction_type),

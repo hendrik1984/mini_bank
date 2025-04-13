@@ -18,12 +18,12 @@
                                 <td>
                                     <%= t.transaction_type %> 
                                     <% if t.transaction_type == "transfer" %>
-                                        <%= current_user.id == t.user_id ? "out" : "in" %>
+                                        <%= current_user.id == t.user_id ? "To" : "From" %>
                                     <% end %>
                                 </td>
                                 <td><%= number_to_currency(t.amount) %></td>
                                 <td><%= t.recipient&.username || "-" %></td>
-                                <td><%= t.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+                                <td><%= t.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
                             </tr>
                         <% end %>
                     </tbody>

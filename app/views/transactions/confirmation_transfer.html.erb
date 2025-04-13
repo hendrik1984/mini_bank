@@ -7,7 +7,7 @@
             <p><strong>Amount:</strong> $<%= @transaction.amount %></p>
 
             <%= form_with model: @transaction, url: transactions_path, local: true do |form| %>
-                <%= form.hidden_field :recipient_username, value: @recipient.username %>
+                <%= form.hidden_field :recipient_id, value: @recipient.id %>
                 <%= form.hidden_field :amount %>
                 <%= form.hidden_field :transaction_type, value: "transfer" %>
 
