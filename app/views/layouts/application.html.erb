@@ -38,7 +38,7 @@
         </div>
       <% end %>
 
-      <% if current_user.role == 'merchant' %>
+      <% if current_user&.role == 'merchant' %>
         <%= render "shared/navbar_merchant" %>
       <% else %>
         <%= render "shared/navbar" %>

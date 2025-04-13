@@ -1,8 +1,9 @@
 <nav class="mb-4 navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <%= link_to merchant_dashboard_path, :class => "navbar-brand" do %>
             <%= image_tag "/merchant.png", alt: "Merchant Logo", class: "img-fluid", width: "30", height: "24" %>
-        </a>
+        <% end %>
+        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

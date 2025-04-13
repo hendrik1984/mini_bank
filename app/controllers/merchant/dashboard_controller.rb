@@ -1,4 +1,6 @@
 class Merchant::DashboardController < ApplicationController
+    before_action :require_login
+
     def index
         @transactions = current_user.transactions.where("transaction_type = ? OR transaction_type = ?", "pay", "refund")
     end
